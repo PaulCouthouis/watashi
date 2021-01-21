@@ -1,1 +1,39 @@
-{"name":"watashi","version":"1.0.0","private":true,"description":"Watashi","author":"Paul Couthouis","keywords":["gatsby"],"scripts":{"develop":"gatsby develop","start":"gatsby develop","build":"gatsby build","serve":"gatsby serve","clean":"gatsby clean"},"dependencies":{"babel-plugin-styled-components":"^1.12.0","gatsby":"^2.26.1","gatsby-plugin-styled-components":"^3.9.0","react":"^16.13.1","react-dom":"^16.13.1","styled-components":"^5.2.1"}}
+{
+  "name": "watashi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Watashi",
+  "author": "Paul Couthouis",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
+    "gatsby": "^2.31.0",
+    "gatsby-plugin-sharp": "^2.13.1",
+    "gatsby-plugin-styled-components": "^3.9.0",
+    "gatsby-plugin-typescript": "^2.11.0",
+    "gatsby-transformer-sharp": "^2.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "2.2.1",
+    "typescript": "^4.1.3"
+  }
+}
