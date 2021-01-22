@@ -17,20 +17,27 @@ interface ChildImageSharp<T extends FluidObject | FixedObject> {
 
 interface Props {
   data: {
-    backgroundImg: ChildImageSharp<FluidObject>;
+    backgroundHeaderImg: ChildImageSharp<FluidObject>;
+    content: {
+      identity: {
+        job: string;
+        name: string;
+      };
+    };
     identityImg: ChildImageSharp<FixedObject>;
   };
 }
 
 export default ({ data }: Props) => {
   console.log(data);
-  const { backgroundImg, identityImg } = data;
+  const { backgroundHeaderImg, identityImg, content } = data;
 
   return (
     <MainLayout>
       <Header
-        backgroundImg={backgroundImg.childImageSharp.img}
+        backgroundImg={backgroundHeaderImg.childImageSharp.img}
         identityImg={identityImg.childImageSharp.img}
+        identity={content.identity}
       ></Header>
     </MainLayout>
   );
@@ -38,7 +45,7 @@ export default ({ data }: Props) => {
 
 export const query = graphql`
   query {
-    backgroundImg: file(relativePath: { eq: "header-background.png" }) {
+    backgroundHeaderImg: file(relativePath: { eq: "header-background.png" }) {
       childImageSharp {
         img: fluid(quality: 100, maxWidth: 1200) {
           ...GatsbyImageSharpFluid
@@ -50,6 +57,12 @@ export const query = graphql`
         img: fixed(quality: 100, height: 128, width: 128) {
           ...GatsbyImageSharpFixed
         }
+      }
+    }
+    content: dataJson {
+      identity {
+        name
+        job
       }
     }
   }

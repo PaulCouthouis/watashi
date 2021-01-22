@@ -39,6 +39,10 @@ const styleIdentityImage = {
 interface HeaderProps {
   backgroundImg: FluidObject;
   identityImg: FixedObject;
+  identity: {
+    job: string;
+    name: string;
+  };
 }
 
 /**
@@ -47,14 +51,15 @@ interface HeaderProps {
 
 export default class Header extends Component<HeaderProps> {
   render() {
+    const { backgroundImg, identityImg, identity } = this.props;
+
     return (
-      <HeaderContainer Tag={"header"} fluid={this.props.backgroundImg}>
+      <HeaderContainer Tag={"header"} fluid={backgroundImg}>
         <Identity>
-          <Image
-            style={styleIdentityImage}
-            fixed={this.props.identityImg}
-          ></Image>
+          <Image style={styleIdentityImage} fixed={identityImg}></Image>
         </Identity>
+        {identity.name}
+        {identity.job}
       </HeaderContainer>
     );
   }
