@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
 import { ProfilObject } from "../shared/interface";
+import Works from "../components/home/works";
 
 const MainLayout = styled.div`
   font-family: "Roboto";
@@ -38,6 +39,7 @@ export default ({ data }: Props) => {
         identityImg={identityImg.childImageSharp.img}
         profil={content.profil}
       ></Header>
+      <Works></Works>
     </MainLayout>
   );
 };

@@ -1,11 +1,7 @@
-import React, { Component } from "react";
-import styled, { StyledComponent } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
-import Image, {
-  FixedObject,
-  FluidObject,
-  GatsbyImageProps,
-} from "gatsby-image";
+import Image, { FixedObject, FluidObject } from "gatsby-image";
 import { ProfilObject } from "../../shared/interface";
 
 /**
@@ -100,7 +96,7 @@ interface HeaderProps {
  * Template
  */
 
-export default class Header extends Component<HeaderProps> {
+export default class Header extends React.Component<HeaderProps> {
   render() {
     const { backgroundImg, identityImg, profil } = this.props;
 
