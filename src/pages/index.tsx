@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
-import { ProfilObject } from "../shared/interface";
+import { ProfilObject, WorkObject } from "../shared/interface";
 import Works from "../components/home/works";
 
 const GlobalStyle = createGlobalStyle`
@@ -31,6 +31,7 @@ interface Props {
     backgroundHeaderImg: ChildImageSharp<FluidObject>;
     content: {
       profil: ProfilObject;
+      works: WorkObject[];
     };
     identityImg: ChildImageSharp<FixedObject>;
   };
@@ -48,7 +49,7 @@ export default ({ data }: Props) => {
         identityImg={identityImg.childImageSharp.img}
         profil={content.profil}
       ></Header>
-      <Works></Works>
+      <Works works={content.works.map((works) => works)}></Works>
     </MainLayout>
   );
 };
@@ -79,6 +80,11 @@ export const query = graphql`
         katakana
         lastName
         sexe
+      }
+      works {
+        company
+        id
+        name
       }
     }
   }

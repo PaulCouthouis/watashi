@@ -8,3 +8,9 @@ export interface ProfilObject {
   lastName: string;
   sexe: string; // better: convert to boolean
 }
+
+export interface WorkObject {
+  company: string;
+  id: string;
+  name: string;
+}

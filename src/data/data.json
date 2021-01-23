@@ -8,5 +8,23 @@
     "katakana": "クートイス　ポール",
     "lastName": "Couthouis",
     "sexe": "男性"
-  }
+  },
+
+  "works": [
+    {
+      "company": "Quelle Energie",
+      "id": "rC4V8sGXGj",
+      "name": "Parcours"
+    },
+    {
+      "company": "Renault Digital",
+      "id": "K2hJFQp2qO",
+      "name": "GFE Centrix"
+    },
+    {
+      "company": "Eurosport",
+      "id": "1yNN1mCjxx",
+      "name": "Livento"
+    }
+  ]
 }

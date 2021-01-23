@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { WorkObject } from "../../shared/interface";
+import WorkList from "../shared/worklist";
 
 /**
  * Styled Component
@@ -12,9 +14,10 @@ const WorksContainer = styled.section`
 
 const WorksHeader = styled.header`
   color: #515151;
+  margin-bottom: 75px;
   text-align: center;
 
-  h2 {
+  h1 {
     font-size: 40px;
     text-transform: uppercase;
   }
@@ -28,7 +31,9 @@ const WorksHeader = styled.header`
  * Props Interface
  */
 
-interface WorksProps {}
+interface WorksProps {
+  works: WorkObject[];
+}
 
 /**
  * Template
@@ -36,12 +41,14 @@ interface WorksProps {}
 
 export default class Works extends React.Component<WorksProps> {
   render() {
+    const { works } = this.props;
     return (
       <WorksContainer>
         <WorksHeader>
-          <h2>Works</h2>
+          <h1>Works</h1>
           <p>制作実績など</p>
         </WorksHeader>
+        <WorkList works={works}></WorkList>
       </WorksContainer>
     );
   }
