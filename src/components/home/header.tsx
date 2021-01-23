@@ -11,7 +11,6 @@ import { ProfilObject } from "../../shared/interface";
 const borderStyle = "1px solid rgba(255, 255, 255, 0.5)";
 
 const HeaderContainer = styled.header`
-  box-sizing: border-box;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -31,7 +30,6 @@ const HeaderContainer = styled.header`
 /* Identity */
 const Identity = styled.div`
   border: ${borderStyle};
-  box-sizing: border-box;
   height: 275px;
   min-width: 275px;
   padding: 30px 0;
@@ -56,6 +54,7 @@ const Name = styled.h1`
 const Job = styled.h2`
   font-size: 14px;
   font-weight: normal;
+  margin-top: 10px;
 `;
 
 /* Information */
@@ -65,9 +64,7 @@ const Information = styled.div`
   max-width: 610px;
 `;
 
-const Description = styled.p`
-  margin: 0;
-`;
+const Description = styled.p``;
 
 const Katakana = styled.p`
   font-size: 16px;

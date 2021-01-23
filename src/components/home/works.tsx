@@ -16,7 +16,6 @@ const WorksHeader = styled.header`
 
   h2 {
     font-size: 40px;
-    margin: 0;
     text-transform: uppercase;
   }
 

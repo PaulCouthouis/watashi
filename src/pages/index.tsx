@@ -1,14 +1,22 @@
 import { graphql } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
 import { ProfilObject } from "../shared/interface";
 import Works from "../components/home/works";
 
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+`;
+
 const MainLayout = styled.div`
   font-family: "Roboto";
+  margin: 0 auto;
   max-width: 1200px;
 `;
 
@@ -34,6 +42,7 @@ export default ({ data }: Props) => {
 
   return (
     <MainLayout>
+      <GlobalStyle></GlobalStyle>
       <Header
         backgroundImg={backgroundHeaderImg.childImageSharp.img}
         identityImg={identityImg.childImageSharp.img}
