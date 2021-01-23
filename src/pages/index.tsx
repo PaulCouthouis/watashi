@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
+import { ProfilObject } from "../shared/interface";
 
 const MainLayout = styled.div`
   font-family: "Roboto";
@@ -20,11 +21,7 @@ interface Props {
   data: {
     backgroundHeaderImg: ChildImageSharp<FluidObject>;
     content: {
-      identity: {
-        firstName: string;
-        lastName: string;
-        job: string;
-      };
+      profil: ProfilObject;
     };
     identityImg: ChildImageSharp<FixedObject>;
   };
@@ -39,7 +36,7 @@ export default ({ data }: Props) => {
       <Header
         backgroundImg={backgroundHeaderImg.childImageSharp.img}
         identityImg={identityImg.childImageSharp.img}
-        identity={content.identity}
+        profil={content.profil}
       ></Header>
     </MainLayout>
   );
@@ -62,10 +59,15 @@ export const query = graphql`
       }
     }
     content: dataJson {
-      identity {
+      profil {
+        adress
+        birthday
+        description
         firstName
-        lastName
         job
+        katakana
+        lastName
+        sexe
       }
     }
   }

@@ -6,6 +6,7 @@ import Image, {
   FluidObject,
   GatsbyImageProps,
 } from "gatsby-image";
+import { ProfilObject } from "../../shared/interface";
 
 /**
  * Styled Component
@@ -13,23 +14,39 @@ import Image, {
 
 const borderStyle = "1px solid rgba(255, 255, 255, 0.5)";
 
-const HeaderContainer = styled(BackgroundImage)`
-  background-position: 50% 85%;
-  background-repeat: none;
+const HeaderContainer = styled.header`
   box-sizing: border-box;
   color: #fff;
-  height: 430px; // tmp
+  display: flex;
+  justify-content: space-between;
   padding: 75px 150px 75px 95px;
+
+  &:before {
+    border-top: ${borderStyle};
+    content: "";
+    display: block;
+    height: 1px;
+    margin-top: 95px;
+    position: absolute;
+    width: 100%;
+  }
 `;
 
+/* Identity */
 const Identity = styled.div`
   border: ${borderStyle};
   box-sizing: border-box;
   height: 275px;
+  min-width: 275px;
   padding: 30px 0;
   text-align: center;
-  width: 275px;
 `;
+
+/** Typescript error :  No overload matches this call. I don't use for the moment */
+// const IdentityImage: StyledComponent<typeof Image, any, {}, never> = styled(Image)``;
+const styleIdentityImage = {
+  borderRadius: "100%",
+};
 
 const Name = styled.h1`
   font-size: 24px;
@@ -45,11 +62,29 @@ const Job = styled.h2`
   font-weight: normal;
 `;
 
-/** Typescript error :  No overload matches this call. I don't use for the moment */
-// const IdentityImage: StyledComponent<typeof Image, any, {}, never> = styled(Image)``;
-const styleIdentityImage = {
-  borderRadius: "100%",
-};
+/* Information */
+const Information = styled.div`
+  font-size: 14px;
+  line-height: 28px;
+  max-width: 610px;
+`;
+
+const Description = styled.p`
+  margin: 0;
+`;
+
+const Katakana = styled.p`
+  font-size: 16px;
+  line-height: 18.75px;
+  margin: 30px 0 10px;
+`;
+
+const InformationTable = styled.table`
+  th {
+    text-align: left;
+    width: 170px;
+  }
+`;
 
 /**
  * Props Interface
@@ -58,11 +93,7 @@ const styleIdentityImage = {
 interface HeaderProps {
   backgroundImg: FluidObject;
   identityImg: FixedObject;
-  identity: {
-    firstName: string;
-    lastName: string;
-    job: string;
-  };
+  profil: ProfilObject;
 }
 
 /**
@@ -71,18 +102,40 @@ interface HeaderProps {
 
 export default class Header extends Component<HeaderProps> {
   render() {
-    const { backgroundImg, identityImg, identity } = this.props;
+    const { backgroundImg, identityImg, profil } = this.props;
 
     return (
-      <HeaderContainer Tag={"header"} fluid={backgroundImg}>
-        <Identity>
-          <Image style={styleIdentityImage} fixed={identityImg}></Image>
-          <Name>
-            {identity.firstName} <span>{identity.lastName}</span>
-          </Name>
-          <Job>{identity.job}</Job>
-        </Identity>
-      </HeaderContainer>
+      <BackgroundImage fluid={backgroundImg}>
+        <HeaderContainer>
+          <Identity>
+            <Image style={styleIdentityImage} fixed={identityImg}></Image>
+            <Name>
+              {profil.firstName} <span>{profil.lastName}</span>
+            </Name>
+            <Job>{profil.job}</Job>
+          </Identity>
+          <Information>
+            <Description>{profil.description}</Description>
+            <Katakana>{profil.katakana}</Katakana>
+            <InformationTable>
+              <tbody>
+                <tr>
+                  <th scope="row">性別</th>
+                  <td>{profil.sexe}</td>
+                </tr>
+                <tr>
+                  <th scope="row">生年月日</th>
+                  <td>{profil.birthday}</td>
+                </tr>
+                <tr>
+                  <th scope="row">現住所</th>
+                  <td>{profil.adress}</td>
+                </tr>
+              </tbody>
+            </InformationTable>
+          </Information>
+        </HeaderContainer>
+      </BackgroundImage>
     );
   }
 }
