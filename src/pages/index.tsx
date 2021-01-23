@@ -55,7 +55,7 @@ export default ({ data }: Props) => {
 
 export const query = graphql`
   query {
-    backgroundHeaderImg: file(relativePath: { eq: "header-background.png" }) {
+    backgroundHeaderImg: file(relativePath: { eq: "header-background.jpg" }) {
       childImageSharp {
         img: fluid(quality: 100, maxWidth: 1200) {
           ...GatsbyImageSharpFluid
