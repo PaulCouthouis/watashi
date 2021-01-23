@@ -16,14 +16,33 @@ const borderStyle = "1px solid rgba(255, 255, 255, 0.5)";
 const HeaderContainer = styled(BackgroundImage)`
   background-position: 50% 85%;
   background-repeat: none;
-  padding: 75px 150px 75px 95px;
+  box-sizing: border-box;
+  color: #fff;
   height: 430px; // tmp
+  padding: 75px 150px 75px 95px;
 `;
 
 const Identity = styled.div`
   border: ${borderStyle};
+  box-sizing: border-box;
   height: 275px;
+  padding: 30px 0;
+  text-align: center;
   width: 275px;
+`;
+
+const Name = styled.h1`
+  font-size: 24px;
+  font-weight: normal;
+
+  > span {
+    text-transform: uppercase;
+  }
+`;
+
+const Job = styled.h2`
+  font-size: 14px;
+  font-weight: normal;
 `;
 
 /** Typescript error :  No overload matches this call. I don't use for the moment */
@@ -40,8 +59,9 @@ interface HeaderProps {
   backgroundImg: FluidObject;
   identityImg: FixedObject;
   identity: {
+    firstName: string;
+    lastName: string;
     job: string;
-    name: string;
   };
 }
 
@@ -57,9 +77,11 @@ export default class Header extends Component<HeaderProps> {
       <HeaderContainer Tag={"header"} fluid={backgroundImg}>
         <Identity>
           <Image style={styleIdentityImage} fixed={identityImg}></Image>
+          <Name>
+            {identity.firstName} <span>{identity.lastName}</span>
+          </Name>
+          <Job>{identity.job}</Job>
         </Identity>
-        {identity.name}
-        {identity.job}
       </HeaderContainer>
     );
   }

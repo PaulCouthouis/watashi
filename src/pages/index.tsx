@@ -6,6 +6,7 @@ import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
 
 const MainLayout = styled.div`
+  font-family: "Roboto";
   max-width: 1200px;
 `;
 
@@ -20,8 +21,9 @@ interface Props {
     backgroundHeaderImg: ChildImageSharp<FluidObject>;
     content: {
       identity: {
+        firstName: string;
+        lastName: string;
         job: string;
-        name: string;
       };
     };
     identityImg: ChildImageSharp<FixedObject>;
@@ -61,7 +63,8 @@ export const query = graphql`
     }
     content: dataJson {
       identity {
-        name
+        firstName
+        lastName
         job
       }
     }

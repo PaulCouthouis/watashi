@@ -1,6 +1,7 @@
 {
   "identity": {
-    "name": "Paul Couthouis",
+    "firstName": "Paul",
+    "lastName": "Couthouis",
     "job": "Front-end Web Developer"
   }
 }
