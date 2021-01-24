@@ -14,16 +14,19 @@
     {
       "company": "Quelle Energie",
       "id": "rC4V8sGXGj",
+      "image": "works-parcours.jpg",
       "name": "Parcours"
     },
     {
       "company": "Renault Digital",
       "id": "K2hJFQp2qO",
+      "image": "works-gfe.jpg",
       "name": "GFE Centrix"
     },
     {
       "company": "Eurosport",
       "id": "1yNN1mCjxx",
+      "image": "works-livento.jpg",
       "name": "Livento"
     }
   ]

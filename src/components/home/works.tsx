@@ -1,6 +1,7 @@
+import { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
-import { WorkObject } from "../../shared/interface";
+import { ChildImageSharp, WorkObject } from "../../shared/interface";
 import WorkList from "../shared/worklist";
 
 /**
@@ -33,6 +34,7 @@ const WorksHeader = styled.header`
 
 interface WorksProps {
   works: WorkObject[];
+  images: ChildImageSharp<FixedObject>[];
 }
 
 /**
@@ -41,14 +43,14 @@ interface WorksProps {
 
 export default class Works extends React.Component<WorksProps> {
   render() {
-    const { works } = this.props;
+    const { works, images } = this.props;
     return (
       <WorksContainer>
         <WorksHeader>
           <h1>Works</h1>
           <p>制作実績など</p>
         </WorksHeader>
-        <WorkList works={works}></WorkList>
+        <WorkList works={works} images={images}></WorkList>
       </WorksContainer>
     );
   }

@@ -1,3 +1,5 @@
+import { FixedObject, FluidObject } from "gatsby-image";
+
 export interface ProfilObject {
   adress: string;
   birthday: string; // better: convert to Date
@@ -12,5 +14,13 @@ export interface ProfilObject {
 export interface WorkObject {
   company: string;
   id: string;
+  image: string;
   name: string;
+}
+
+export interface ChildImageSharp<T extends FluidObject | FixedObject> {
+  relativePath?: string;
+  childImageSharp: {
+    img: T;
+  };
 }

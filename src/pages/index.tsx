@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
-import { ProfilObject, WorkObject } from "../shared/interface";
+import { ChildImageSharp, ProfilObject, WorkObject } from "../shared/interface";
 import Works from "../components/home/works";
 
 const GlobalStyle = createGlobalStyle`
@@ -20,11 +20,9 @@ const MainLayout = styled.div`
   max-width: 1200px;
 `;
 
-interface ChildImageSharp<T extends FluidObject | FixedObject> {
-  childImageSharp: {
-    img: T;
-  };
-}
+/**
+ * Props
+ */
 
 interface Props {
   data: {
@@ -34,12 +32,17 @@ interface Props {
       works: WorkObject[];
     };
     identityImg: ChildImageSharp<FixedObject>;
+    worksImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
   };
 }
 
+/**
+ * Template
+ */
+
 export default ({ data }: Props) => {
   console.log(data);
-  const { backgroundHeaderImg, identityImg, content } = data;
+  const { backgroundHeaderImg, identityImg, content, worksImages } = data;
 
   return (
     <MainLayout>
@@ -49,7 +52,10 @@ export default ({ data }: Props) => {
         identityImg={identityImg.childImageSharp.img}
         profil={content.profil}
       ></Header>
-      <Works works={content.works.map((works) => works)}></Works>
+      <Works
+        works={content.works}
+        images={worksImages.edges.map((edge) => edge.node)}
+      ></Works>
     </MainLayout>
   );
 };
@@ -70,6 +76,18 @@ export const query = graphql`
         }
       }
     }
+    worksImages: allFile(filter: { relativePath: { regex: "/w/" } }) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            img: fixed(quality: 100, height: 275, width: 275) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    }
     content: dataJson {
       profil {
         adress
@@ -85,6 +103,7 @@ export const query = graphql`
         company
         id
         name
+        image
       }
     }
   }
