@@ -24,3 +24,19 @@ export interface ChildImageSharp<T extends FluidObject | FixedObject> {
     img: T;
   };
 }
+
+export interface ResumeObject {
+  experience: {
+    company: string;
+    description: string;
+    endDate: string;
+    position: string;
+    startDate: string;
+  }[];
+  education: {
+    endDate: string;
+    school: string;
+    startDate: string;
+    subject: string;
+  }[];
+}

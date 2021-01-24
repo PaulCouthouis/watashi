@@ -29,5 +29,58 @@
       "image": "works-livento.jpg",
       "name": "Livento"
     }
-  ]
+  ],
+
+  "resume": {
+    "experience": [
+      {
+        "company": "Quelle Energie",
+        "description": "家の改装見積もりシミュレーター",
+        "endDate": "2019-09-01T00:00:00.000Z",
+        "position": "フロントエンド開発者",
+        "startDate": "2018-11-01T00:00:00.000Z"
+      },
+      {
+        "company": "Renault Digital",
+        "description": "エンジニアリングアライアンス(ルノー・日産・三菱)のために新しいアプリ",
+        "endDate": "2018-10-01T00:00:00.000Z",
+        "position": "フロントエンド開発者",
+        "startDate": "2017-09-01T00:00:00.000Z"
+      },
+      {
+        "company": "Holy Dys",
+        "description": "会社の主要なアプリの新しいバージョン",
+        "endDate": "2017-08-01T00:00:00.000Z",
+        "position": "フロントエンド開発者",
+        "startDate": "2017-05-01T00:00:00.000Z"
+      },
+      {
+        "company": "Eurosport",
+        "description": "二つの社内アプリ",
+        "endDate": "2017-04-01T00:00:00.000Z",
+        "position": "フロントエンド開発者",
+        "startDate": "2016-05-01T00:00:00.000Z"
+      }
+    ],
+    "education": [
+      {
+        "endDate": "2021-03-01T00:00:00.000Z",
+        "school": "大阪文化国際学校",
+        "startDate": "2019-10-01T00:00:00.000Z",
+        "subject": "日本語学校"
+      },
+      {
+        "endDate": "2012-02-01T00:00:00.000Z",
+        "school": "F2I European Institute",
+        "startDate": "2013-02-01T00:00:00.000Z",
+        "subject": "IT専門学校"
+      },
+      {
+        "endDate": "2009-09-01T00:00:00.000Z",
+        "school": "Paris Est Marne-La-Vallee大学",
+        "startDate": "2011-06-01T00:00:00.000Z",
+        "subject": "マルチメディア学部"
+      }
+    ]
+  }
 }

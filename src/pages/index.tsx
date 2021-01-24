@@ -4,20 +4,31 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import Header from "../components/home/header";
 import { FixedObject, FluidObject } from "gatsby-image";
-import { ChildImageSharp, ProfilObject, WorkObject } from "../shared/interface";
+import {
+  ChildImageSharp,
+  ProfilObject,
+  ResumeObject,
+  WorkObject,
+} from "../shared/interface";
 import Works from "../components/home/works";
+import Resume from "../components/home/resume";
 
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
   }
 `;
 
 const MainLayout = styled.div`
   font-family: "Roboto";
-  margin: 0 auto;
-  max-width: 1200px;
+
+  > * > * {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 /**
@@ -30,6 +41,7 @@ interface Props {
     content: {
       profil: ProfilObject;
       works: WorkObject[];
+      resume: ResumeObject;
     };
     identityImg: ChildImageSharp<FixedObject>;
     worksImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
@@ -56,6 +68,7 @@ export default ({ data }: Props) => {
         works={content.works}
         images={worksImages.edges.map((edge) => edge.node)}
       ></Works>
+      <Resume resume={content.resume}></Resume>
     </MainLayout>
   );
 };
@@ -104,6 +117,21 @@ export const query = graphql`
         id
         name
         image
+      }
+      resume {
+        experience {
+          company
+          description
+          endDate
+          position
+          startDate
+        }
+        education {
+          endDate
+          school
+          startDate
+          subject
+        }
       }
     }
   }
