@@ -24,6 +24,7 @@ const HeaderContainer = styled.header`
     margin-top: 95px;
     position: absolute;
     width: 100%;
+    max-width: 1105px;
   }
 `;
 
@@ -99,35 +100,37 @@ export default class Header extends React.Component<HeaderProps> {
 
     return (
       <BackgroundImage fluid={backgroundImg}>
-        <HeaderContainer>
-          <Identity>
-            <Image style={styleIdentityImage} fixed={identityImg}></Image>
-            <Name>
-              {profil.firstName} <span>{profil.lastName}</span>
-            </Name>
-            <Job>{profil.job}</Job>
-          </Identity>
-          <Information>
-            <Description>{profil.description}</Description>
-            <Katakana>{profil.katakana}</Katakana>
-            <InformationTable>
-              <tbody>
-                <tr>
-                  <th scope="row">性別</th>
-                  <td>{profil.sexe}</td>
-                </tr>
-                <tr>
-                  <th scope="row">生年月日</th>
-                  <td>{profil.birthday}</td>
-                </tr>
-                <tr>
-                  <th scope="row">現住所</th>
-                  <td>{profil.adress}</td>
-                </tr>
-              </tbody>
-            </InformationTable>
-          </Information>
-        </HeaderContainer>
+        <div>
+          <HeaderContainer>
+            <Identity>
+              <Image style={styleIdentityImage} fixed={identityImg}></Image>
+              <Name>
+                {profil.firstName} <span>{profil.lastName}</span>
+              </Name>
+              <Job>{profil.job}</Job>
+            </Identity>
+            <Information>
+              <Description>{profil.description}</Description>
+              <Katakana>{profil.katakana}</Katakana>
+              <InformationTable>
+                <tbody>
+                  <tr>
+                    <th scope="row">性別</th>
+                    <td>{profil.sexe}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">生年月日</th>
+                    <td>{profil.birthday}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">現住所</th>
+                    <td>{profil.adress}</td>
+                  </tr>
+                </tbody>
+              </InformationTable>
+            </Information>
+          </HeaderContainer>
+        </div>
       </BackgroundImage>
     );
   }
