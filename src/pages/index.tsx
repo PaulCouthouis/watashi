@@ -14,6 +14,7 @@ import {
 import Works from "../components/home/works";
 import Resume from "../components/home/resume";
 import Social from "../components/home/social";
+import Footer from "../components/shared/footer";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -82,6 +83,7 @@ export default ({ data }: Props) => {
         interrestImages={interrestImages.edges.map((edge) => edge.node)}
       ></Resume>
       <Social socials={content.socials}></Social>
+      <Footer></Footer>
     </MainLayout>
   );
 };
