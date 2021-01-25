@@ -81,6 +81,68 @@
         "startDate": "2011-06-01T00:00:00.000Z",
         "subject": "マルチメディア学部"
       }
+    ],
+    "skills": [
+      {
+        "name": "HTML, CSS",
+        "score": 5,
+        "details": "SCSS"
+      },
+      {
+        "name": "Javascript",
+        "score": 4,
+        "details": "ES6, Typescript, Jquery"
+      },
+      {
+        "name": "PHP",
+        "score": 3,
+        "details": "Wordpress, Symfony"
+      },
+      {
+        "name": "Java",
+        "score": 1,
+        "details": ""
+      },
+      {
+        "name": "C#",
+        "score": 1,
+        "details": ""
+      },
+      {
+        "name": "Angular",
+        "score": 4,
+        "details": "RxJS, NgRX, Jasmine"
+      },
+      {
+        "name": "React",
+        "score": 3,
+        "details": "Redux, Styled-component, Gatsby"
+      },
+      {
+        "name": "Cypress",
+        "score": 3,
+        "details": "行動テスト"
+      },
+      {
+        "name": "Node.js",
+        "score": 2,
+        "details": "NestJS"
+      },
+      {
+        "name": "Git",
+        "score": 5,
+        "details": "GitFlow"
+      },
+      {
+        "name": "Circle CI",
+        "score": 3,
+        "details": "継続的インテグレーション"
+      },
+      {
+        "name": "Jenkins",
+        "score": 2,
+        "details": "継続的インテグレーション"
+      }
     ]
   }
 }

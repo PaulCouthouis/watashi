@@ -105,6 +105,34 @@ const TimelineList = styled.ul`
   }
 `;
 
+const SkillTable = styled.table`
+  font-size: 14px;
+  margin: 20px 0 0 20px;
+
+  td:nth-child(1) {
+    font-weight: bold;
+    padding-right: 70px;
+  }
+
+  td:nth-child(2) {
+    padding-right: 20px;
+  }
+`;
+
+const SkillDot = styled.span<{ checked?: boolean }>`
+  color: ${(props) => {
+    console.log(props);
+    return props.checked ? "#00A1AB" : "#c4c4c4";
+  }};
+  font-size: 28px;
+  margin-right: 5px;
+  vertical-align: bottom;
+
+  &:before {
+    content: "•";
+  }
+`;
+
 /**
  * Props
  */
@@ -125,8 +153,14 @@ export default class Resume extends React.Component<ResumeProps> {
     return `${year}.${month < 10 ? `0${month}` : month}`;
   }
 
+  private getSkillDots(score: number) {
+    return Array.from(Array(5).keys()).map((i) => {
+      return <SkillDot checked={score > i}></SkillDot>;
+    });
+  }
+
   render() {
-    const { experience, education } = this.props.resume;
+    const { experience, education, skills } = this.props.resume;
 
     return (
       <ResumeContainer>
@@ -164,9 +198,22 @@ export default class Resume extends React.Component<ResumeProps> {
           </ResumeArticle>
           <ResumeArticle>
             <ResumeTitle>Skill</ResumeTitle>
+            <SkillTable>
+              <tbody>
+                {(skills || []).map((skill) => (
+                  <tr>
+                    <td>{skill.name}</td>
+                    <td data-score={skill.score}>
+                      {this.getSkillDots(skill.score)}
+                    </td>
+                    <td>{skill.details}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </SkillTable>
           </ResumeArticle>
           <ResumeArticle>
-            <ResumeTitle>Personal Qualities</ResumeTitle>
+            <ResumeTitle>Interrest</ResumeTitle>
           </ResumeArticle>
         </ResumeList>
       </ResumeContainer>

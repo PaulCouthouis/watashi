@@ -39,4 +39,9 @@ export interface ResumeObject {
     startDate: string;
     subject: string;
   }[];
+  skills: {
+    details: string;
+    name: string;
+    score: number;
+  }[];
 }

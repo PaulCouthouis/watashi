@@ -132,6 +132,11 @@ export const query = graphql`
           startDate
           subject
         }
+        skills {
+          details
+          name
+          score
+        }
       }
     }
   }
