@@ -44,4 +44,9 @@ export interface ResumeObject {
     name: string;
     score: number;
   }[];
+  interrests: {
+    details: string[];
+    image: string;
+    name: string;
+  }[];
 }

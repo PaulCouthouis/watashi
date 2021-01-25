@@ -44,6 +44,7 @@ interface Props {
       resume: ResumeObject;
     };
     identityImg: ChildImageSharp<FixedObject>;
+    interrestImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
     worksImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
   };
 }
@@ -54,7 +55,13 @@ interface Props {
 
 export default ({ data }: Props) => {
   console.log(data);
-  const { backgroundHeaderImg, identityImg, content, worksImages } = data;
+  const {
+    backgroundHeaderImg,
+    identityImg,
+    content,
+    worksImages,
+    interrestImages,
+  } = data;
 
   return (
     <MainLayout>
@@ -68,7 +75,10 @@ export default ({ data }: Props) => {
         works={content.works}
         images={worksImages.edges.map((edge) => edge.node)}
       ></Works>
-      <Resume resume={content.resume}></Resume>
+      <Resume
+        resume={content.resume}
+        interrestImages={interrestImages.edges.map((edge) => edge.node)}
+      ></Resume>
     </MainLayout>
   );
 };
@@ -89,12 +99,26 @@ export const query = graphql`
         }
       }
     }
-    worksImages: allFile(filter: { relativePath: { regex: "/w/" } }) {
+    worksImages: allFile(filter: { relativePath: { regex: "/works/" } }) {
       edges {
         node {
           relativePath
           childImageSharp {
             img: fixed(quality: 100, height: 275, width: 275) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    }
+    interrestImages: allFile(
+      filter: { relativePath: { regex: "/interrest/" } }
+    ) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            img: fixed(quality: 100, height: 128, width: 128) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -136,6 +160,11 @@ export const query = graphql`
           details
           name
           score
+        }
+        interrests {
+          details
+          image
+          name
         }
       }
     }

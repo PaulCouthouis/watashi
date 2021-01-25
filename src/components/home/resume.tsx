@@ -1,6 +1,8 @@
+import GatsbyImage, { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
-import { ResumeObject } from "../../shared/interface";
+import { ChildImageSharp, ResumeObject } from "../../shared/interface";
+import { getImageFixed } from "../../shared/methods";
 
 /**
  * Styled Component
@@ -26,7 +28,12 @@ const ResumeArticle = styled.article`
   width: 50%;
 `;
 
-const ResumeTitle = styled.h1`
+const bookIcon =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNSAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjczOTUgNUMxMy45NDc1IDUgMTQuMTE3NiA0LjgzMTI1IDE0LjExNzYgNC42MjVWMy4zNzVDMTQuMTE3NiAzLjE2ODc1IDEzLjk0NzUgMyAxMy43Mzk1IDNIMTMuMTA5MlYxLjVDMTMuMTA5MiAwLjY3MTg3NSAxMi40MzE3IDAgMTEuNTk2NiAwSDEuNTEyNjFDMC42Nzc1MjEgMCAwIDAuNjcxODc1IDAgMS41VjE0LjVDMCAxNS4zMjgxIDAuNjc3NTIxIDE2IDEuNTEyNjEgMTZIMTEuNTk2NkMxMi40MzE3IDE2IDEzLjEwOTIgMTUuMzI4MSAxMy4xMDkyIDE0LjVWMTNIMTMuNzM5NUMxMy45NDc1IDEzIDE0LjExNzYgMTIuODMxMyAxNC4xMTc2IDEyLjYyNVYxMS4zNzVDMTQuMTE3NiAxMS4xNjg3IDEzLjk0NzUgMTEgMTMuNzM5NSAxMUgxMy4xMDkyVjlIMTMuNzM5NUMxMy45NDc1IDkgMTQuMTE3NiA4LjgzMTI1IDE0LjExNzYgOC42MjVWNy4zNzVDMTQuMTE3NiA3LjE2ODc1IDEzLjk0NzUgNyAxMy43Mzk1IDdIMTMuMTA5MlY1SDEzLjczOTVaTTYuNTU0NjIgNEM3LjY2NzAyIDQgOC41NzE0MyA0Ljg5Njg3IDguNTcxNDMgNkM4LjU3MTQzIDcuMTAzMTMgNy42NjcwMiA4IDYuNTU0NjIgOEM1LjQ0MjIzIDggNC41Mzc4MiA3LjEwMzEzIDQuNTM3ODIgNkM0LjUzNzgyIDQuODk2ODcgNS40NDIyMyA0IDYuNTU0NjIgNFpNMTAuMDg0IDExLjRDMTAuMDg0IDExLjczMTIgOS43Njg5MSAxMiA5LjM3ODE1IDEySDMuNzMxMDlDMy4zNDAzNCAxMiAzLjAyNTIxIDExLjczMTIgMy4wMjUyMSAxMS40VjEwLjhDMy4wMjUyMSA5LjgwNjI1IDMuOTczNzQgOSA1LjE0Mjg2IDlINS4zMDA0MkM1LjY4ODAzIDkuMTU5MzggNi4xMTAyOSA5LjI1IDYuNTU0NjIgOS4yNUM2Ljk5ODk1IDkuMjUgNy40MjQzNyA5LjE1OTM4IDcuODA4ODIgOUg3Ljk2NjM5QzkuMTM1NSA5IDEwLjA4NCA5LjgwNjI1IDEwLjA4NCAxMC44VjExLjRaIiBmaWxsPSIjQzRDNEM0Ii8+Cjwvc3ZnPgo=";
+const heartIcon =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjQ0NzMgMC45NTcyODdDMTIuNzM0OCAtMC41MDIwODcgMTAuMTg3OSAtMC4yMzk1ODcgOC42MTYwNCAxLjM4MjI5TDguMDAwNDEgMi4wMTY2Nkw3LjM4NDc5IDEuMzgyMjlDNS44MTYwMyAtMC4yMzk1ODcgMy4yNjYwMiAtMC41MDIwODcgMS41NTM1MSAwLjk1NzI4N0MtMC40MDg5OTMgMi42MzIyOSAtMC41MTIxMTkgNS42Mzg1MyAxLjI0NDE0IDcuNDU0MTZMNy4yOTEwNCAxMy42OTc5QzcuNjgxNjYgMTQuMTAxIDguMzE2MDQgMTQuMTAxIDguNzA2NjcgMTMuNjk3OUwxNC43NTM2IDcuNDU0MTZDMTYuNTEyOSA1LjYzODUzIDE2LjQwOTggMi42MzIyOSAxNC40NDczIDAuOTU3Mjg3WiIgZmlsbD0iI0M0QzRDNCIvPgo8L3N2Zz4K";
+
+const ResumeTitle = styled.h1<{ heart?: boolean }>`
   border-bottom: 1px solid #c4c4c4;
   color: #00a1ab;
   font-size: 16px;
@@ -34,7 +41,7 @@ const ResumeTitle = styled.h1`
   text-transform: uppercase;
 
   &:before {
-    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNSAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjczOTUgNUMxMy45NDc1IDUgMTQuMTE3NiA0LjgzMTI1IDE0LjExNzYgNC42MjVWMy4zNzVDMTQuMTE3NiAzLjE2ODc1IDEzLjk0NzUgMyAxMy43Mzk1IDNIMTMuMTA5MlYxLjVDMTMuMTA5MiAwLjY3MTg3NSAxMi40MzE3IDAgMTEuNTk2NiAwSDEuNTEyNjFDMC42Nzc1MjEgMCAwIDAuNjcxODc1IDAgMS41VjE0LjVDMCAxNS4zMjgxIDAuNjc3NTIxIDE2IDEuNTEyNjEgMTZIMTEuNTk2NkMxMi40MzE3IDE2IDEzLjEwOTIgMTUuMzI4MSAxMy4xMDkyIDE0LjVWMTNIMTMuNzM5NUMxMy45NDc1IDEzIDE0LjExNzYgMTIuODMxMyAxNC4xMTc2IDEyLjYyNVYxMS4zNzVDMTQuMTE3NiAxMS4xNjg3IDEzLjk0NzUgMTEgMTMuNzM5NSAxMUgxMy4xMDkyVjlIMTMuNzM5NUMxMy45NDc1IDkgMTQuMTE3NiA4LjgzMTI1IDE0LjExNzYgOC42MjVWNy4zNzVDMTQuMTE3NiA3LjE2ODc1IDEzLjk0NzUgNyAxMy43Mzk1IDdIMTMuMTA5MlY1SDEzLjczOTVaTTYuNTU0NjIgNEM3LjY2NzAyIDQgOC41NzE0MyA0Ljg5Njg3IDguNTcxNDMgNkM4LjU3MTQzIDcuMTAzMTMgNy42NjcwMiA4IDYuNTU0NjIgOEM1LjQ0MjIzIDggNC41Mzc4MiA3LjEwMzEzIDQuNTM3ODIgNkM0LjUzNzgyIDQuODk2ODcgNS40NDIyMyA0IDYuNTU0NjIgNFpNMTAuMDg0IDExLjRDMTAuMDg0IDExLjczMTIgOS43Njg5MSAxMiA5LjM3ODE1IDEySDMuNzMxMDlDMy4zNDAzNCAxMiAzLjAyNTIxIDExLjczMTIgMy4wMjUyMSAxMS40VjEwLjhDMy4wMjUyMSA5LjgwNjI1IDMuOTczNzQgOSA1LjE0Mjg2IDlINS4zMDA0MkM1LjY4ODAzIDkuMTU5MzggNi4xMTAyOSA5LjI1IDYuNTU0NjIgOS4yNUM2Ljk5ODk1IDkuMjUgNy40MjQzNyA5LjE1OTM4IDcuODA4ODIgOUg3Ljk2NjM5QzkuMTM1NSA5IDEwLjA4NCA5LjgwNjI1IDEwLjA4NCAxMC44VjExLjRaIiBmaWxsPSIjQzRDNEM0Ii8+Cjwvc3ZnPgo=");
+    content: url(${(props) => (props.heart ? heartIcon : bookIcon)});
     margin: 2px 0 0 -25px;
     position: absolute;
   }
@@ -120,10 +127,7 @@ const SkillTable = styled.table`
 `;
 
 const SkillDot = styled.span<{ checked?: boolean }>`
-  color: ${(props) => {
-    console.log(props);
-    return props.checked ? "#00A1AB" : "#c4c4c4";
-  }};
+  color: ${(props) => (props.checked ? "#00A1AB" : "#c4c4c4")};
   font-size: 28px;
   margin-right: 5px;
   vertical-align: bottom;
@@ -133,11 +137,37 @@ const SkillDot = styled.span<{ checked?: boolean }>`
   }
 `;
 
+const InterestContainer = styled.div`
+  color: #000;
+  display: flex;
+  margin-top: 20px;
+  text-align: center;
+
+  > div {
+    margin-right: 30px;
+
+    h1 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    img {
+      border-radius: 100%;
+    }
+  }
+`;
+
 /**
  * Props
  */
 
 interface ResumeProps {
+  interrestImages: ChildImageSharp<FixedObject>[];
   resume: ResumeObject;
 }
 
@@ -160,7 +190,7 @@ export default class Resume extends React.Component<ResumeProps> {
   }
 
   render() {
-    const { experience, education, skills } = this.props.resume;
+    const { experience, education, skills, interrests } = this.props.resume;
 
     return (
       <ResumeContainer>
@@ -213,7 +243,23 @@ export default class Resume extends React.Component<ResumeProps> {
             </SkillTable>
           </ResumeArticle>
           <ResumeArticle>
-            <ResumeTitle>Interrest</ResumeTitle>
+            <ResumeTitle heart>Interrest</ResumeTitle>
+            <InterestContainer>
+              {(interrests || []).map((interrest) => (
+                <div>
+                  <GatsbyImage
+                    fixed={getImageFixed(
+                      this.props.interrestImages,
+                      interrest.image
+                    )}
+                  ></GatsbyImage>
+                  <h1>{interrest.name}</h1>
+                  {(interrest.details || []).map((detail) => (
+                    <p>{detail}</p>
+                  ))}
+                </div>
+              ))}
+            </InterestContainer>
           </ResumeArticle>
         </ResumeList>
       </ResumeContainer>

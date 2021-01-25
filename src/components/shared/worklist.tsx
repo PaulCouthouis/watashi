@@ -2,6 +2,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
+import { getImageFixed } from "../../shared/methods";
 
 /**
  * Styled Component
@@ -44,19 +45,14 @@ interface WorkListProps {
  */
 
 export default class WorkList extends React.Component<WorkListProps> {
-  private getImageFixed(work: WorkObject): FixedObject | [] {
-    const image = this.props.images.find(
-      (image) => image.relativePath === work.image
-    );
-    return image ? image.childImageSharp.img : [];
-  }
-
   render() {
     return (
       <WorkListContainer>
         {(this.props.works || []).map((work) => (
           <WorkContainer key={work.id}>
-            <GatsbyImage fixed={this.getImageFixed(work)}></GatsbyImage>
+            <GatsbyImage
+              fixed={getImageFixed(this.props.images, work.image)}
+            ></GatsbyImage>
             <h1>{work.name}</h1>
             <h2>{work.company}</h2>
             <svg

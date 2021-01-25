@@ -143,6 +143,23 @@
         "score": 2,
         "details": "継続的インテグレーション"
       }
+    ],
+    "interrests": [
+      {
+        "details": ["カジュアル選手", "パリ・サンジェルマンファン"],
+        "image": "interrest-neymar.jpg",
+        "name": "サッカー"
+      },
+      {
+        "details": ["One Piece", "GTO", "Walking Dead"],
+        "image": "interrest-onepiece.png",
+        "name": "漫画"
+      },
+      {
+        "details": ["Pulp Fiction", "Kill Bill", "The Hateful Eight"],
+        "image": "interrest-pulp.jpg",
+        "name": "タランティーノ映画"
+      }
     ]
   }
 }
