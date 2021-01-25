@@ -8,10 +8,12 @@ import {
   ChildImageSharp,
   ProfilObject,
   ResumeObject,
+  SocialObject,
   WorkObject,
 } from "../shared/interface";
 import Works from "../components/home/works";
 import Resume from "../components/home/resume";
+import Social from "../components/home/social";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -42,6 +44,7 @@ interface Props {
       profil: ProfilObject;
       works: WorkObject[];
       resume: ResumeObject;
+      socials: SocialObject[];
     };
     identityImg: ChildImageSharp<FixedObject>;
     interrestImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
@@ -54,7 +57,6 @@ interface Props {
  */
 
 export default ({ data }: Props) => {
-  console.log(data);
   const {
     backgroundHeaderImg,
     identityImg,
@@ -79,6 +81,7 @@ export default ({ data }: Props) => {
         resume={content.resume}
         interrestImages={interrestImages.edges.map((edge) => edge.node)}
       ></Resume>
+      <Social socials={content.socials}></Social>
     </MainLayout>
   );
 };
@@ -166,6 +169,11 @@ export const query = graphql`
           image
           name
         }
+      }
+      socials {
+        icon
+        link
+        name
       }
     }
   }

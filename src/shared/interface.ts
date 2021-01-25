@@ -50,3 +50,9 @@ export interface ResumeObject {
     name: string;
   }[];
 }
+
+export interface SocialObject {
+  icon: string;
+  link: string;
+  name: string;
+}
