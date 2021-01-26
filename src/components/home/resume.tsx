@@ -185,7 +185,7 @@ export default class Resume extends React.Component<ResumeProps> {
 
   private getSkillDots(score: number) {
     return Array.from(Array(5).keys()).map((i) => {
-      return <SkillDot checked={score > i}></SkillDot>;
+      return <SkillDot key={i} checked={score > i}></SkillDot>;
     });
   }
 
@@ -199,7 +199,7 @@ export default class Resume extends React.Component<ResumeProps> {
             <ResumeTitle>Experience</ResumeTitle>
             <TimelineList>
               {(experience || []).map((exp) => (
-                <li>
+                <li key={exp.company}>
                   <h1>{exp.position}</h1>
                   <time>
                     <span>{this.convertDate2YearMonth(exp.startDate)}</span>
@@ -215,7 +215,7 @@ export default class Resume extends React.Component<ResumeProps> {
             <ResumeTitle>Education</ResumeTitle>
             <TimelineList>
               {(education || []).map((educ) => (
-                <li>
+                <li key={educ.school}>
                   <h1>{educ.subject}</h1>
                   <time>
                     <span>{this.convertDate2YearMonth(educ.startDate)}</span>
@@ -231,7 +231,7 @@ export default class Resume extends React.Component<ResumeProps> {
             <SkillTable>
               <tbody>
                 {(skills || []).map((skill) => (
-                  <tr>
+                  <tr key={skill.name}>
                     <td>{skill.name}</td>
                     <td data-score={skill.score}>
                       {this.getSkillDots(skill.score)}
@@ -246,7 +246,7 @@ export default class Resume extends React.Component<ResumeProps> {
             <ResumeTitle heart>Interrest</ResumeTitle>
             <InterestContainer>
               {(interrests || []).map((interrest) => (
-                <div>
+                <div key={interrest.name}>
                   <GatsbyImage
                     fixed={getImageFixed(
                       this.props.interrestImages,
@@ -254,8 +254,8 @@ export default class Resume extends React.Component<ResumeProps> {
                     )}
                   ></GatsbyImage>
                   <h1>{interrest.name}</h1>
-                  {(interrest.details || []).map((detail) => (
-                    <p>{detail}</p>
+                  {(interrest.details || []).map((detail, i) => (
+                    <p key={i}>{detail}</p>
                   ))}
                 </div>
               ))}

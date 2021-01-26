@@ -52,7 +52,7 @@ export default class Social extends React.Component<SocialProps> {
       <SocialContainer>
         <div>
           {(socials || []).map((social) => (
-            <a href={social.link}>
+            <a href={social.link} key={social.name}>
               <img
                 src={"data:image/svg+xml;base64," + social.icon}
                 alt={social.name}
