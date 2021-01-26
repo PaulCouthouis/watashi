@@ -1,6 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import Helmet from "react-helmet";
+import styled from "styled-components";
 
 import HomeHeader from "../components/home/home-header";
 import { FixedObject, FluidObject } from "gatsby-image";
@@ -15,23 +16,9 @@ import Works from "../components/home/works";
 import Resume from "../components/home/resume";
 import Social from "../components/home/social";
 import Footer from "../components/shared/footer";
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
+import { GlobalStyle } from "../shared/style";
 
 const MainLayout = styled.div`
-  font-family: "Roboto";
-
   > * > * {
     max-width: 1200px;
     margin-left: auto;
@@ -73,6 +60,13 @@ export default ({ data }: Props) => {
 
   return (
     <MainLayout>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <GlobalStyle></GlobalStyle>
       <HomeHeader
         backgroundImg={backgroundHeaderImg.childImageSharp.img}

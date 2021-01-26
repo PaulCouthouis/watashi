@@ -20,6 +20,7 @@
     "gatsby": "^2.31.0",
     "gatsby-background-image": "^1.4.0",
     "gatsby-image": "^2.10.0",
+    "gatsby-plugin-react-helmet": "^3.9.0",
     "gatsby-plugin-sharp": "^2.13.1",
     "gatsby-plugin-styled-components": "^3.9.0",
     "gatsby-plugin-typescript": "^2.11.0",
@@ -28,9 +29,11 @@
     "gatsby-transformer-sharp": "^2.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
