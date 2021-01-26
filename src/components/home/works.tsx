@@ -2,6 +2,7 @@ import { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
+import { SectionTitle } from "../shared/section-title";
 import WorkList from "../shared/worklist";
 
 /**
@@ -11,21 +12,6 @@ import WorkList from "../shared/worklist";
 const WorksContainer = styled.section`
   line-height: 28px;
   margin: 120px 0;
-`;
-
-const WorksHeader = styled.header`
-  color: #515151;
-  margin-bottom: 75px;
-  text-align: center;
-
-  h1 {
-    font-size: 40px;
-    text-transform: uppercase;
-  }
-
-  p {
-    margin: 15px 0 0;
-  }
 `;
 
 /**
@@ -46,10 +32,10 @@ export default class Works extends React.Component<WorksProps> {
     const { works, images } = this.props;
     return (
       <WorksContainer>
-        <WorksHeader>
+        <SectionTitle>
           <h1>Works</h1>
-          <p>制作実績など</p>
-        </WorksHeader>
+          <p>制作</p>
+        </SectionTitle>
         <WorkList works={works} images={images}></WorkList>
       </WorksContainer>
     );
