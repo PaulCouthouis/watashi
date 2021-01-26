@@ -94,7 +94,7 @@ interface HeaderProps {
  * Template
  */
 
-export default class Header extends React.Component<HeaderProps> {
+export default class HomeHeader extends React.Component<HeaderProps> {
   render() {
     const { backgroundImg, identityImg, profil } = this.props;
 

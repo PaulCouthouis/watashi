@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import Header from "../components/home/header";
+import HomeHeader from "../components/home/home-header";
 import { FixedObject, FluidObject } from "gatsby-image";
 import {
   ChildImageSharp,
@@ -69,11 +69,11 @@ export default ({ data }: Props) => {
   return (
     <MainLayout>
       <GlobalStyle></GlobalStyle>
-      <Header
+      <HomeHeader
         backgroundImg={backgroundHeaderImg.childImageSharp.img}
         identityImg={identityImg.childImageSharp.img}
         profil={content.profil}
-      ></Header>
+      ></HomeHeader>
       <Works
         works={content.works}
         images={worksImages.edges.map((edge) => edge.node)}
