@@ -12,6 +12,12 @@ exports.createPages = async ({ graphql, actions }) => {
         }
         works {
           company
+          details {
+            content
+            charge
+            environnment
+            summary
+          }
           id
           name
           image
@@ -21,10 +27,11 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   result.data.content.works.forEach(work => {
     const { content } = result.data;
+    const pagePath = work.name.toLowerCase().replace(/\s+/g, '-');
     createPage({
-      path: `work-${work.name.toLowerCase().replace(/\s+/g, '-')}`,
+      path: `work-${pagePath}`,
       component: workTemplate,
-      context: {profil: content.profil, work, otherWorks: content.works.filter(w => work.id !== w.id)},
+      context: {profil: content.profil, work, otherWorks: content.works.filter(w => work.id !== w.id), regex:`/details-${pagePath}/`},
     })
   })
 }

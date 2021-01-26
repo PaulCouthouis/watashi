@@ -10,11 +10,12 @@ import { getImageFixed } from "../../shared/methods";
 
 const WorkListContainer = styled.main`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 const WorkContainer = styled.a`
   line-height: 28px;
+  margin: 0 15px;
   text-align: center;
 
   h1 {

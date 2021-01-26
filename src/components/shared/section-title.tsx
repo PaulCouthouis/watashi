@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SectionTitle = styled.header`
   color: #515151;
+  line-height: 28px;
   margin-bottom: 75px;
   text-align: center;
 

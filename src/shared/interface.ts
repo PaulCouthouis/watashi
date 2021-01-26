@@ -13,6 +13,12 @@ export interface ProfilObject {
 
 export interface WorkObject {
   company: string;
+  details?: {
+    content: string[];
+    charge: string;
+    environnment: string;
+    summary: string;
+  };
   id: string;
   image: string;
   name: string;

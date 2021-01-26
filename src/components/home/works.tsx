@@ -10,7 +10,6 @@ import WorkList from "../shared/worklist";
  */
 
 const WorksContainer = styled.section`
-  line-height: 28px;
   margin: 120px 0;
 `;
 

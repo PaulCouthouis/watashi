@@ -13,18 +13,44 @@
   "works": [
     {
       "company": "Quelle Energie",
+      "details": {
+        "content": [
+          "様々なインターフェースを開発",
+          "リグレッションがなくメンテナブルで性能のあるアプリ開発のためリーダーとしてチームを引っ張る",
+          "スクラムバージョンのアジャイルを全体的に使用"
+        ],
+        "charge": "アーキテクチャー、開発、ユニットテスト（カバレッジ100％）、統合テスト（カバレッジ〜60％）、継続的インテグレーション、コードレビュー",
+        "environnment": "MacOS、Typescript、Angular、NgRx、RxJS、SCSS、Jasmine、Cypress、CircleCI、Git",
+        "summary": "家の改装見積もりシミュレーター"
+      },
       "id": "rC4V8sGXGj",
       "image": "works-parcours.jpg",
       "name": "Parcours"
     },
     {
       "company": "Renault Digital",
+      "details": {
+        "content": [
+          "様々なインターフェースとスプレッドシートを開発",
+          "技術会議での発表者",
+          "スクラムバージョンのアジャイルを全体的に使用"
+        ],
+        "charge": "開発、ユニットテスト、コードレビュー",
+        "environnment": "MacOS、Typescript、Angular、NgRx、RxJS、SCSS、Jasmine、Jenkins、Git",
+        "summary": "エンジニアリングアライアンス（ルノー・日産・三菱）のために新しいアプリ"
+      },
       "id": "K2hJFQp2qO",
       "image": "works-gfe.jpg",
-      "name": "GFE Centrix"
+      "name": "GFE Centric"
     },
     {
       "company": "Eurosport",
+      "details": {
+        "content": ["様々なインターフェースを開発"],
+        "charge": "開発、ユニットテスト",
+        "environnment": "Windows、Typescript、Angular、RxJS、SCSS、Jasmine、Git",
+        "summary": "会社の主要なアプリの新しいバージョン多数のパラメーターに従業員の時間の使用を最適化することで構成されている"
+      },
       "id": "1yNN1mCjxx",
       "image": "works-livento.jpg",
       "name": "Livento"
