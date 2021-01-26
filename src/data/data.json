@@ -46,10 +46,13 @@
     {
       "company": "Eurosport",
       "details": {
-        "content": ["様々なインターフェースを開発"],
+        "content": [
+          "チャンネルでライブ放送されるスポーツイベントの短いビデオ（例：サッカーのゴール）を早く編集するために使用されるバックオフィス",
+          "チャネルのWebプレーヤーでの追加のビデオストリームのブロードキャストを管理するために使用されるバックオフィス"
+        ],
         "charge": "開発、ユニットテスト",
         "environnment": "Windows、Typescript、Angular、RxJS、SCSS、Jasmine、Git",
-        "summary": "会社の主要なアプリの新しいバージョン多数のパラメーターに従業員の時間の使用を最適化することで構成されている"
+        "summary": "二つの社内アプリ"
       },
       "id": "1yNN1mCjxx",
       "image": "works-livento.jpg",

@@ -2,7 +2,8 @@ import GatsbyImage, { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, ResumeObject } from "../../shared/interface";
-import { getImageFixed } from "../../shared/methods";
+import { getImage } from "../../shared/methods";
+import { device } from "../../shared/style";
 
 /**
  * Styled Component
@@ -16,16 +17,27 @@ const ResumeContainer = styled.section`
 `;
 
 const ResumeList = styled.div`
+  align-items: center;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: -130px;
+
+  @media ${device.tablet} {
+    align-items: inherit;
+    flex-direction: row;
+  }
 `;
 
 const ResumeArticle = styled.article`
   max-width: 545px;
   padding-top: 130px;
-  width: 50%;
+  width: 90%;
+
+  @media ${device.tablet} {
+    width: 45%;
+  }
 `;
 
 const bookIcon =
@@ -118,7 +130,11 @@ const SkillTable = styled.table`
 
   td:nth-child(1) {
     font-weight: bold;
-    padding-right: 70px;
+    padding-right: 20px;
+
+    @media ${device.tablet} {
+      padding-right: 70px;
+    }
   }
 
   td:nth-child(2) {
@@ -140,11 +156,15 @@ const SkillDot = styled.span<{ checked?: boolean }>`
 const InterestContainer = styled.div`
   color: #000;
   display: flex;
-  margin-top: 20px;
+  flex-direction: column;
   text-align: center;
 
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
+
   > div {
-    margin-right: 30px;
+    margin: 20px 30px 0 0;
 
     h1 {
       font-size: 16px;
@@ -248,7 +268,7 @@ export default class Resume extends React.Component<ResumeProps> {
               {(interrests || []).map((interrest) => (
                 <div key={interrest.name}>
                   <GatsbyImage
-                    fixed={getImageFixed(
+                    fixed={getImage(
                       this.props.interrestImages,
                       interrest.image
                     )}

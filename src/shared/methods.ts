@@ -1,10 +1,10 @@
-import { FixedObject } from "gatsby-image";
+import { FixedObject, FluidObject } from "gatsby-image";
 import { ChildImageSharp } from "./interface";
 
-export function getImageFixed(
-  imageList: ChildImageSharp<FixedObject>[],
+export function getImage<T extends FluidObject | FixedObject>(
+  imageList: ChildImageSharp<T>[],
   imageName: string
-): FixedObject | [] {
+): T | [] {
   const image = imageList.find((image) => image.relativePath === imageName);
   return image ? image.childImageSharp.img : [];
 }

@@ -33,7 +33,7 @@ const WorkNavigation = styled.nav`
 
 interface WorkProps extends PageProps {
   data: {
-    worksImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
+    worksImages: { edges: { node: ChildImageSharp<FluidObject> }[] };
     detailImages: { edges: { node: ChildImageSharp<FluidObject> }[] };
   };
   pageContext: {
@@ -90,8 +90,8 @@ export const workQuery = graphql`
         node {
           relativePath
           childImageSharp {
-            img: fixed(quality: 100, height: 275, width: 275) {
-              ...GatsbyImageSharpFixed
+            img: fluid(quality: 100, maxHeight: 275, maxWidth: 275) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

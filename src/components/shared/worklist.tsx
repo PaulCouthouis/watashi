@@ -1,25 +1,35 @@
-import GatsbyImage, { FixedObject } from "gatsby-image";
+import GatsbyImage, { FixedObject, FluidObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
-import { getImageFixed } from "../../shared/methods";
+import { getImage } from "../../shared/methods";
+import { device } from "../../shared/style";
 
 /**
  * Styled Component
  */
 
 const WorkListContainer = styled.main`
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  @media ${device.tablet} {
+    align-items: inherit;
+    flex-direction: row;
+  }
 `;
 
 const WorkContainer = styled.a`
   line-height: 28px;
   margin: 0 15px;
   text-align: center;
+  width: 275px;
 
   h1 {
     font-size: 16px;
+    margin-top: 25px;
   }
 
   h2 {
@@ -28,7 +38,11 @@ const WorkContainer = styled.a`
   }
 
   svg {
-    margin-top: 40px;
+    margin: 40px 0;
+
+    @media ${device.tablet} {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -38,7 +52,7 @@ const WorkContainer = styled.a`
 
 interface WorkListProps {
   works: WorkObject[];
-  images: ChildImageSharp<FixedObject>[];
+  images: ChildImageSharp<FluidObject>[];
 }
 
 /**
@@ -55,7 +69,7 @@ export default class WorkList extends React.Component<WorkListProps> {
             key={work.id}
           >
             <GatsbyImage
-              fixed={getImageFixed(this.props.images, work.image)}
+              fluid={getImage(this.props.images, work.image)}
             ></GatsbyImage>
             <h1>{work.name}</h1>
             <h2>{work.company}</h2>

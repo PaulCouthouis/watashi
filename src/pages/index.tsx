@@ -41,7 +41,7 @@ interface Props {
     };
     identityImg: ChildImageSharp<FixedObject>;
     interrestImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
-    worksImages: { edges: { node: ChildImageSharp<FixedObject> }[] };
+    worksImages: { edges: { node: ChildImageSharp<FluidObject> }[] };
   };
 }
 
@@ -108,8 +108,8 @@ export const query = graphql`
         node {
           relativePath
           childImageSharp {
-            img: fixed(quality: 100, height: 275, width: 275) {
-              ...GatsbyImageSharpFixed
+            img: fluid(quality: 100, maxHeight: 275, maxWidth: 275) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

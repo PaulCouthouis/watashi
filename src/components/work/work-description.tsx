@@ -2,6 +2,7 @@ import GatsbyImage, { FluidObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
+import { device } from "../../shared/style";
 import { SectionTitle } from "../shared/section-title";
 
 /**
@@ -13,20 +14,36 @@ const WorkDescriptionContainer = styled.section`
 `;
 
 const WorkDescriptionArticle = styled.article`
+  align-items: center;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   flex-wrap: wrap;
+  padding: 0 10px;
+
+  @media ${device.tablet} {
+    align-items: inherit;
+    flex-direction: row-reverse;
+  }
 
   > .gatsby-image-wrapper {
     border: 1px solid #eee;
     margin-bottom: 20px;
-    width: calc(100% - 440px);
+    width: 90%;
+
+    @media ${device.tablet} {
+      width: calc(100% - 440px);
+    }
   }
 `;
 
 const WorkDescriptionDetail = styled.div`
-  padding-left: 30px;
-  width: 440px;
+  margin-bottom: 20px;
+  width: 90%;
+
+  @media ${device.tablet} {
+    padding-left: 30px;
+    width: 440px;
+  }
 
   h2 {
     border-bottom: 1px solid #c4c4c4;

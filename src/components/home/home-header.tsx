@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Image, { FixedObject, FluidObject } from "gatsby-image";
 import { ProfilObject } from "../../shared/interface";
+import { device } from "../../shared/style";
 
 /**
  * Styled Component
@@ -11,30 +12,47 @@ import { ProfilObject } from "../../shared/interface";
 const borderStyle = "1px solid rgba(255, 255, 255, 0.5)";
 
 const HomeHeaderContainer = styled.header`
+  align-items: center;
   color: #fff;
   display: flex;
-  justify-content: space-between;
-  padding: 75px 150px 75px 95px;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 75px 0 75px;
 
-  &:before {
-    border-top: ${borderStyle};
-    content: "";
-    display: block;
-    height: 1px;
-    margin-top: 95px;
-    position: absolute;
-    width: 100%;
-    max-width: 1105px;
+  @media ${device.laptop} {
+    align-items: inherit;
+    flex-direction: row;
+  }
+
+  @media ${device.laptopL} {
+    justify-content: space-between;
+    padding-right: 150px;
+    padding-left: 95px;
+
+    &:before {
+      border-top: ${borderStyle};
+      content: "";
+      display: block;
+      height: 1px;
+      margin-top: 95px;
+      position: absolute;
+      width: 100%;
+      max-width: 1105px;
+    }
   }
 `;
 
 /* Identity */
 const Identity = styled.div`
-  border: ${borderStyle};
   height: 275px;
   min-width: 275px;
-  padding: 30px 0;
+
   text-align: center;
+
+  @media ${device.laptop} {
+    border: ${borderStyle};
+    padding: 30px 0;
+  }
 `;
 
 /** Typescript error :  No overload matches this call. I don't use for the moment */
@@ -64,6 +82,11 @@ const Information = styled.div`
   font-size: 14px;
   line-height: 28px;
   max-width: 610px;
+  padding: 0 10px;
+
+  @media ${device.tablet} {
+    padding: 0;
+  }
 `;
 
 const Description = styled.p``;
@@ -100,7 +123,10 @@ export default class HomeHeader extends React.Component<HomeHeaderProps> {
     const { backgroundImg, identityImg, profil } = this.props;
 
     return (
-      <BackgroundImage fluid={backgroundImg}>
+      <BackgroundImage
+        fluid={backgroundImg}
+        style={{ backgroundPosition: "bottom" }}
+      >
         <div>
           <HomeHeaderContainer>
             <Identity>

@@ -1,4 +1,4 @@
-import { FixedObject } from "gatsby-image";
+import { FixedObject, FluidObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
@@ -19,7 +19,7 @@ const WorksContainer = styled.section`
 
 interface WorksProps {
   works: WorkObject[];
-  images: ChildImageSharp<FixedObject>[];
+  images: ChildImageSharp<FluidObject>[];
 }
 
 /**

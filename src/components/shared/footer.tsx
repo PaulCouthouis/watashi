@@ -19,6 +19,7 @@ const FooterCirle = styled.button`
   float: right;
   height: 64px;
   margin-top: -32px;
+  margin-right: 10px;
   outline: none;
   width: 64px;
 
