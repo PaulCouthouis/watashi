@@ -13,7 +13,7 @@ const WorkListContainer = styled.main`
   justify-content: space-around;
 `;
 
-const WorkContainer = styled.article`
+const WorkContainer = styled.a`
   line-height: 28px;
   text-align: center;
 
@@ -49,7 +49,10 @@ export default class WorkList extends React.Component<WorkListProps> {
     return (
       <WorkListContainer>
         {(this.props.works || []).map((work) => (
-          <WorkContainer key={work.id}>
+          <WorkContainer
+            href={`/work-${work.name.toLowerCase().replace(/\s+/g, "-")}`}
+            key={work.id}
+          >
             <GatsbyImage
               fixed={getImageFixed(this.props.images, work.image)}
             ></GatsbyImage>
