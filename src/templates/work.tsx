@@ -5,6 +5,8 @@ import { PageProps } from "gatsby";
 import { WorkObject } from "../shared/interface";
 import styled from "styled-components";
 import { GlobalStyle } from "../shared/style";
+import Footer from "../components/shared/footer";
+import WorkDescription from "../components/work/work-description";
 
 /**
  * styled component
@@ -50,6 +52,8 @@ export default class Work extends React.Component<WorkProps> {
           firstName={profil.firstName}
           lastName={profil.lastName}
         ></WorkHeader>
+        <WorkDescription></WorkDescription>
+        <Footer></Footer>
       </WorkLayout>
     );
   }
