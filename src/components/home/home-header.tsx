@@ -10,7 +10,7 @@ import { ProfilObject } from "../../shared/interface";
 
 const borderStyle = "1px solid rgba(255, 255, 255, 0.5)";
 
-const HeaderContainer = styled.header`
+const HomeHeaderContainer = styled.header`
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -46,6 +46,7 @@ const styleIdentityImage = {
 const Name = styled.h1`
   font-size: 24px;
   font-weight: normal;
+  margin-top: 30px;
 
   > span {
     text-transform: uppercase;
@@ -84,7 +85,7 @@ const InformationTable = styled.table`
  * Props Interface
  */
 
-interface HeaderProps {
+interface HomeHeaderProps {
   backgroundImg: FluidObject;
   identityImg: FixedObject;
   profil: ProfilObject;
@@ -94,14 +95,14 @@ interface HeaderProps {
  * Template
  */
 
-export default class HomeHeader extends React.Component<HeaderProps> {
+export default class HomeHeader extends React.Component<HomeHeaderProps> {
   render() {
     const { backgroundImg, identityImg, profil } = this.props;
 
     return (
       <BackgroundImage fluid={backgroundImg}>
         <div>
-          <HeaderContainer>
+          <HomeHeaderContainer>
             <Identity>
               <Image style={styleIdentityImage} fixed={identityImg}></Image>
               <Name>
@@ -129,7 +130,7 @@ export default class HomeHeader extends React.Component<HeaderProps> {
                 </tbody>
               </InformationTable>
             </Information>
-          </HeaderContainer>
+          </HomeHeaderContainer>
         </div>
       </BackgroundImage>
     );

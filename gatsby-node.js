@@ -20,10 +20,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   result.data.content.works.forEach(work => {
+    const { content } = result.data;
     createPage({
       path: `work-${work.name.toLowerCase().replace(/\s+/g, '-')}`,
       component: workTemplate,
-      context: {work, content: result.data.content},
+      context: {profil: content.profil, work, otherWorks: content.works.filter(w => work.id !== w.id)},
     })
   })
 }
