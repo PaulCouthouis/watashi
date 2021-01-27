@@ -107,7 +107,7 @@ export default class WorkDescription extends React.Component<WorkDescriptionProp
             <h3>業務内容</h3>
             <ul>
               {(details?.content || []).map((c, i) => (
-                <li key="i">{c}</li>
+                <li key={i}>{c}</li>
               ))}
             </ul>
           </WorkDescriptionDetail>

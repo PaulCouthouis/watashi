@@ -2,7 +2,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, ResumeObject } from "../../shared/interface";
-import { getImage } from "../../shared/methods";
+import ImageService from "../../shared/methods";
 import { device } from "../../shared/style";
 
 /**
@@ -268,7 +268,7 @@ export default class Resume extends React.Component<ResumeProps> {
               {(interrests || []).map((interrest) => (
                 <div key={interrest.name}>
                   <GatsbyImage
-                    fixed={getImage(
+                    fixed={ImageService.getImage(
                       this.props.interrestImages,
                       interrest.image
                     )}

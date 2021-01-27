@@ -1,8 +1,8 @@
-import GatsbyImage, { FixedObject, FluidObject } from "gatsby-image";
+import GatsbyImage, { FluidObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";
-import { getImage } from "../../shared/methods";
+import ImageService from "../../shared/methods";
 import { device } from "../../shared/style";
 
 /**
@@ -69,7 +69,7 @@ export default class WorkList extends React.Component<WorkListProps> {
             key={work.id}
           >
             <GatsbyImage
-              fluid={getImage(this.props.images, work.image)}
+              fluid={ImageService.getImage(this.props.images, work.image)}
             ></GatsbyImage>
             <h1>{work.name}</h1>
             <h2>{work.company}</h2>

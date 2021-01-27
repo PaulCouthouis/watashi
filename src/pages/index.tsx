@@ -49,43 +49,45 @@ interface Props {
  * Template
  */
 
-export default ({ data }: Props) => {
-  const {
-    backgroundHeaderImg,
-    identityImg,
-    content,
-    worksImages,
-    interrestImages,
-  } = data;
+export default class Index extends React.Component<Props> {
+  render() {
+    const {
+      backgroundHeaderImg,
+      identityImg,
+      content,
+      worksImages,
+      interrestImages,
+    } = this.props.data;
 
-  return (
-    <MainLayout>
-      <Helmet>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
-      <GlobalStyle></GlobalStyle>
-      <HomeHeader
-        backgroundImg={backgroundHeaderImg.childImageSharp.img}
-        identityImg={identityImg.childImageSharp.img}
-        profil={content.profil}
-      ></HomeHeader>
-      <Works
-        works={content.works}
-        images={worksImages.edges.map((edge) => edge.node)}
-      ></Works>
-      <Resume
-        resume={content.resume}
-        interrestImages={interrestImages.edges.map((edge) => edge.node)}
-      ></Resume>
-      <Social socials={content.socials}></Social>
-      <Footer></Footer>
-    </MainLayout>
-  );
-};
+    return (
+      <MainLayout>
+        <Helmet>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </Helmet>
+        <GlobalStyle></GlobalStyle>
+        <HomeHeader
+          backgroundImg={backgroundHeaderImg.childImageSharp.img}
+          identityImg={identityImg.childImageSharp.img}
+          profil={content.profil}
+        ></HomeHeader>
+        <Works
+          works={content.works}
+          images={worksImages.edges.map((edge) => edge.node)}
+        ></Works>
+        <Resume
+          resume={content.resume}
+          interrestImages={interrestImages.edges.map((edge) => edge.node)}
+        ></Resume>
+        <Social socials={content.socials}></Social>
+        <Footer></Footer>
+      </MainLayout>
+    );
+  }
+}
 
 export const query = graphql`
   query {

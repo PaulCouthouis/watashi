@@ -1,4 +1,4 @@
-import { FixedObject, FluidObject } from "gatsby-image";
+import { FluidObject } from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { ChildImageSharp, WorkObject } from "../../shared/interface";

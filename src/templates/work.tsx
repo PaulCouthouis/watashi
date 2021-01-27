@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { GlobalStyle } from "../shared/style";
 import Footer from "../components/shared/footer";
 import WorkDescription from "../components/work/work-description";
-import { FixedObject, FluidObject } from "gatsby-image";
+import { FluidObject } from "gatsby-image";
 import WorkList from "../components/shared/worklist";
 
 /**
